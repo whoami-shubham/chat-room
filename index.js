@@ -1,5 +1,5 @@
 const WebSocket = require('ws');
-let s = new WebSocket.Server({port:80});
+let s = new WebSocket.Server({port:4000});
 var client=0;
 function getRandomColor() {
   var letters = '0123456789ABCDEF';
