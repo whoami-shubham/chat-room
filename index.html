@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Chat App</title>
+	<link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+	<style>
+	.c{
+		margin-top: 10%;
+		padding: 10px;
+	}
+	</style>
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-3 c">
+		    <textarea style="width: 100%; overflow: auto;" rows="10" id="message"></textarea>
+		    <button class="btn btn-primary" onclick="send()">send</button>
+			</div>
+			<div class="col-sm-6">
+				<h2 style="text-align: center;">Messages</h2>
+				<div style="width: 100%;max-height:400px; overflow: scroll;color: green;background:black;" id="broadcast"></div>
+			</div>
+			<div class="col-sm-3 c">
+			<textarea style="width: 100%; overflow: scroll;" rows="10" readonly id="users"></textarea>
+			</div>
+		</div>
+		
+	</div>
+	<script>
+		var sock = new WebSocket("ws://127.0.0.1:3000/index.html","optionalProtocol");
+		var broadcast =  document.getElementById('broadcast');
+		var message   =  document.getElementById('message');
+		var newuser   =  document.getElementById('users');
+		sock.onmessage = function(event) {
+			broadcast.innerHTML = broadcast.innerHTML + '<br>'+event.data;
+			broadcast.scrollTop = broadcast.scrollHeight;
+		}
+		function send(){
+			sock.send(message.value);
+			broadcast.innerHTML = broadcast.innerHTML + '<br>'+ '<sapn style="color:blue;">You: </sapn>'+ message.value;
+		 broadcast.scrollTop = broadcast.scrollHeight;
+		 message.value="";
+		}
+		
+  
+	</script>
+
+</body>
+</html>
