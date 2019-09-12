@@ -1,5 +1,5 @@
 const WebSocket = require('ws');
-let s = new WebSocket.Server({port:3000});
+let s = new WebSocket.Server({port:80});
 var client=0;
 function getRandomColor() {
   var letters = '0123456789ABCDEF';
@@ -48,4 +48,8 @@ s.on('connection',function(ws,req) {
 			}
 		});
 	console.log('New User Connected. Total Connections:'+client);
+<<<<<<< HEAD
 })
+=======
+})
+>>>>>>> d050822a3408f4bfdce8d1c4f3eaae349d38616c
