@@ -1,6 +1,6 @@
 const WebSocket = require('ws');
 // let host = "whoami-chatroom.herokuapp.com";
-let s = new WebSocket.Server({port:4000});
+let s = new WebSocket.Server({port:8080});
 var client=0;
 function getRandomColor() {
   var letters = '0123456789ABCDEF';
